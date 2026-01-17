@@ -6,7 +6,7 @@
     <meta name="robots" content="index, follow">
     <meta name="robots" content="noindex, nofollow">
     <!-- Default Meta -->
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <title>Enterprise-Informed Strategy, Execution &amp; AI ROI | Get Latest</title>
@@ -218,15 +218,34 @@
         </section>
 
         <!-- BLOG SECTION WITH IFRAME -->
-        <section class="blog py-5">
-            <div class="container text-center">
-                <h2 class="fw-bold mb-4">Blog<span class="dot-pink">.</span></h2>
-
-                <div class="blog-iframe-container mx-auto">
-                    <iframe src="https://[your-username].github.io/[your-blog-repo]/" title="Latest Blog Posts"
-                        loading="lazy">
-                    </iframe>
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% for post in site.posts %}
+                    <div class="col">
+                        <article class="card h-100">
+                            <div class="card-body">
+                                <h3 class="h5 mb-3">
+                                    <a href="{{ post.url }}" class="text-decoration-none text-dark">
+                                        {{ post.title }}
+                                    </a>
+                                </h3>
+                                <p class="text-muted small mb-3">{{ post.date | date: "%B %d, %Y" }}</p>
+                                {% if post.excerpt %}
+                                <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                                {% endif %}
+                                <a href="{{ post.url }}" class="btn btn-sm btn-outline-primary">Read More →</a>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
                 </div>
+
+                {% if site.posts.size == 0 %}
+                <div class="text-center py-5">
+                    <p class="text-muted">No posts yet. Check back soon!</p>
+                </div>
+                {% endif %}
             </div>
         </section>
     </main>
