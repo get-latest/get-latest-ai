@@ -109,7 +109,7 @@ h4 {
 }
 
 .bg-mint {
-    background-color: var(--bg-mint) !important;    
+    background-color: var(--bg-mint) !important;
 }
 
 /* --- SPLIT ROW / Z-PATTERN LAYOUT --- */
@@ -150,7 +150,7 @@ h4 {
         flex-direction: column;
         min-height: auto;
     }
-    
+
     .split-img img {
         height: 300px;
     }
@@ -223,11 +223,25 @@ h4 {
 
 /* --- BACKWARD COMPATIBILITY ALIASES --- */
 /* Keep old class names working for existing HTML */
-.about-split-row { @extend .split-row; }
-.about-img-wrapper { @extend .split-img; }
-.about-text-content { @extend .split-content; }
-.card.teal { @extend .card-teal; }
-.card.white { @extend .card-white; }
+.about-split-row {
+    @extend .split-row;
+}
+
+.about-img-wrapper {
+    @extend .split-img;
+}
+
+.about-text-content {
+    @extend .split-content;
+}
+
+.card.teal {
+    @extend .card-teal;
+}
+
+.card.white {
+    @extend .card-white;
+}
 
 /* Actual backward compatibility (CSS doesn't support @extend, use duplicate declarations) */
 .about-split-row,
@@ -410,11 +424,94 @@ nav {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(38, 166, 154, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
 
+/* ===================================
+   ABOUT PAGE SPECIFIC STYLES
+   =================================== */
+
+/* STRATEGIC PILLARS SECTION */
+.pillars-section-mint {   
+    background-color: var(--bg-mint);
+}
+
+.pillars-section-white {   
+    background-color: var(--bg-white);
+}
+
+.pillars-section-mint,
+.pillars-section-white {    
+    color: var(--text-dark);
+    padding: 0;
+}
+
+.pillars-section-mint h2,
+.pillars-section-white h2 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.pillars-section-mint .lead-text,
+.pillars-section-white .lead-text {
+    color: var(--text-muted);
+    max-width: 850px;
+    margin: 0 auto 0 auto;
+}
+
+.strategic-pillars-row {
+    border: none !important;
+}
+
+.pillar-item {
+    padding: 0.9rem 2rem;
+    border-right: 1px solid var(--primary-teal);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pillar-item:last-child {
+    border-right: none;
+}
+
+.pillar-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--primary-teal);
+    margin: 0 auto 1.25rem auto;
+    display: block;
+}
+
+.pillar-content h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.pillar-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .pillar-item {
+        border-right: none;
+        border-bottom: 1px solid var(--primary-teal);
+        padding: 2.5rem 1.5rem;
+    }
+
+    .pillar-item:last-child {
+        border-bottom: none;
+    }
+}
+
 /* --- FOOTER COMPONENT --- */
 footer {
     background: var(--dark-navy);
     color: var(--white);
-    padding: 4rem 0 2rem;    
+    padding: 4rem 0 2rem;
 }
 
 /* Fix for horizontal distribution and alignment */
