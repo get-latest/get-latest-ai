@@ -111,7 +111,7 @@ h4 {
 }
 
 .about-text-content {
-    padding: clamp(0.1rem, 8vw, 0.1rem, 0.5rem);
+    padding: clamp(1rem, 2rem, 4rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
