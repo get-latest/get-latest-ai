@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /images/
+Disallow: /js/
+
+Sitemap: https://getlatest.ai/sitemap.xml
