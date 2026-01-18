@@ -54,7 +54,7 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                     {% for post in site.posts %}
                     <div class="col">
-                        <article class="card blog-card h-100">
+                        <article class="card blog-card {% cycle 'blog-card-mint', 'blog-card-white', 'blog-card-mint' %} h-100">
                             <div class="card-body">
                                 <h3 class="mb-3">
                                     <a href="{{ post.url }}" class="text-decoration-none">
