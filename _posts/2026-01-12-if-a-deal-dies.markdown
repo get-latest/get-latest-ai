@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "If a Deal Dies Quietly, Your System Is Broken"
+author: Justin Henriksen
 description: "Most revenue doesn’t get lost in big moments. It disappears through silence: stalled deals, missed follow-ups, and no one noticing until it’s too late."
 date: 2026-01-18
 categories: [revenue, execution]
