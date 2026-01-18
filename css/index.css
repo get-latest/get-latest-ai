@@ -188,7 +188,17 @@
     }
 
     .hero-visual {
-        height: 350px;
         margin-top: 2rem;
+    }
+
+    .bg-mint .text-center,
+    .bg-mint h3,
+    .bg-mint .lead-text {
+        text-align: left !important;
+    }
+
+    .bg-mint h5,
+    .bg-mint p {
+        text-align: left;
     }
 }
