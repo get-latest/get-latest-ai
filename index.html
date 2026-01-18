@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
-                    {% for post in site.posts %}
+                    {% for post in site.posts limit:4 %}
                     <div class="col">
                         <article class="card h-100">
                             <div class="card-body">
@@ -350,6 +350,12 @@
                 </div>
                 {% endif %}
             </div>
+
+            <div class="col text-center">
+                        <a href="blog.html" class="btn btn-dark px-5 py-3 fw-bold">
+                            See All Posts
+                        </a>
+                    </div>
         </section>
     </main>
 
