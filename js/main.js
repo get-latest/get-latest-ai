@@ -58,4 +58,65 @@ window.addEventListener('DOMContentLoaded', () => {
     // Using components/ folder as suggested by your AI Studio output
     loadComponent('header-placeholder', '/components/header.html');
     loadComponent('footer-placeholder', '/components/footer.html');
+    
+    // Initialize pain points carousel if it exists on the page
+    initPainPointsCarousel();
 });
+
+/**
+ * Pain Points Carousel
+ * Auto-rotates through pain points with manual navigation
+ */
+function initPainPointsCarousel() {
+    const carousel = document.querySelector('.pain-point-carousel');
+    if (!carousel) return; // Exit if not on a page with the carousel
+    
+    const cards = carousel.querySelectorAll('.pain-point-card');
+    const dots = document.querySelectorAll('.pain-point-dots .dot');
+    let currentIndex = 0;
+    let autoRotateInterval;
+    
+    // Function to show a specific card
+    function showCard(index) {
+        // Remove active class from all cards and dots
+        cards.forEach(card => card.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current card and dot
+        cards[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentIndex = index;
+    }
+    
+    // Function to go to next card
+    function nextCard() {
+        const nextIndex = (currentIndex + 1) % cards.length;
+        showCard(nextIndex);
+    }
+    
+    // Start auto-rotation
+    function startAutoRotate() {
+        autoRotateInterval = setInterval(nextCard, 5000); // Change every 5 seconds
+    }
+    
+    // Stop auto-rotation
+    function stopAutoRotate() {
+        clearInterval(autoRotateInterval);
+    }
+    
+    // Add click handlers to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopAutoRotate();
+            showCard(index);
+            startAutoRotate(); // Restart auto-rotation after manual selection
+        });
+    });
+    
+    // Start the carousel
+    startAutoRotate();
+    
+    // Pause rotation when user hovers over the carousel
+    carousel.addEventListener('mouseenter', stopAutoRotate);
+    carousel.addEventListener('mouseleave', startAutoRotate);
+}
