@@ -145,6 +145,10 @@ h5.text-primary-dark {
     background-color: var(--bg-mint) !important;
 }
 
+.bg-white {
+    background-color: var(--white) !important;
+}
+
 /* --- SPLIT ROW / Z-PATTERN LAYOUT --- */
 /* Custom component for alternating image/text sections */
 .split-row {
