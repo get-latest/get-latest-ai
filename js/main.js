@@ -61,8 +61,8 @@ function setActiveNavLink() {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         }
-        // Check if we're on a blog post page - activate blog nav link
-        else if (href === "/blog/index.html" && currentPath.includes("/revenue/execution/")) {
+        // Check if we're on a blog post page (contains year/month/day pattern) - activate blog nav link
+        else if (href === "/blog/index.html" && /\/\d{4}\/\d{2}\/\d{2}\//.test(currentPath)) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         }
