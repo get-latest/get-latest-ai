@@ -21,7 +21,7 @@
       <priority>0.5</priority>
    </url>
    <url>
-      <loc>https://getlatest.ai/blog.html</loc>
+      <loc>https://getlatest.ai/blog/index.html</loc>
       <lastmod>2026-01-17</lastmod>
       <priority>0.3</priority>
    </url>
@@ -29,5 +29,25 @@
       <loc>https://getlatest.ai/contact.html</loc>
       <lastmod>2026-01-17</lastmod>
       <priority>0.3</priority>
+   </url>
+   <url>
+      <loc>https://getlatest.ai/revenue/execution/2025/12/30/why-your-best-leads-still-dont-convert.html</loc>
+      <lastmod>2025-12-30</lastmod>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>https://getlatest.ai/revenue/execution/2026/01/05/you-dont-have-a-follow-up-problem.html</loc>
+      <lastmod>2026-01-05</lastmod>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>https://getlatest.ai/revenue/execution/2026/01/12/if-a-deal-dies.html</loc>
+      <lastmod>2026-01-12</lastmod>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>https://getlatest.ai/revenue/execution/2026/01/19/the-hidden-cost.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <priority>0.6</priority>
    </url>
 </urlset>

@@ -1,0 +1,430 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    <!-- Default Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <title>Blog | Insight That Drives Impact | Get Latest</title>
+    <meta name="title" content="Blog | Insight That Drives Impact | Get Latest">
+    <meta name="description"
+        content="Explore insights on AI strategy, operational execution, and business performance from Get Latest. Read practical perspectives on turning AI opportunities into measurable business outcomes.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://getlatest.ai/blog/">
+    <meta property="og:title" content="Blog | Insight That Drives Impact | Get Latest">
+    <meta property="og:description"
+        content="Practical insights on AI strategy, execution excellence, and measurable business performance improvement.">
+    <meta property="og:image" content="https://getlatest.ai/images/logo.svg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://getlatest.ai/blog/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/site.css">
+
+    <style>
+        /* Blog Card Styles */
+        .blog-card {
+            border-radius: 2px;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Featured Image Container */
+        .blog-card-image {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: visible;
+            background-color: #f0f0f0;
+        }
+
+        .blog-card-image-inner {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 2px 2px 0 0;
+        }
+
+        .blog-card-image-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-card-image-inner img {
+            transform: scale(1.05);
+        }
+
+        /* Date Badge */
+        .blog-card-date-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        /* Category Badge */
+        .blog-card-category-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--dark-navy);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 2px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+        }
+
+        /* Author Avatar */
+        .blog-card-author {
+            position: absolute;
+            bottom: -30px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: #e0e0e0;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .blog-card-author img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Card Body */
+        .blog-card-body {
+            padding: 48px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-card-title {
+            font-size: 1.5rem !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin-bottom: 16px !important;
+            color: var(--text-dark) !important;
+        }
+
+        .blog-card-excerpt {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 24px !important;
+            color: var(--text-dark) !important;
+            flex-grow: 1;
+        }
+
+        /* Read More Link */
+        .blog-card-read-more {
+            color: var(--primary-teal) !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            font-size: 0.9rem !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            transition: color 0.2s ease;
+        }
+
+        .blog-card-read-more:hover {
+            color: #00a896;
+        }
+
+        /* Pagination Styles */
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pagination li {
+            display: inline-block;
+        }
+
+        .pagination a,
+        .pagination span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .pagination a {
+            color: var(--primary-teal);
+            background-color: transparent;
+            font-weight: 400 !important;
+        }
+
+        .pagination a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .pagination .active span {
+            color: white;
+            background-color: var(--primary-teal);
+        }
+
+        .pagination .disabled span {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .blog-card-image {
+                height: 200px;
+            }
+
+            .blog-card-title {
+                font-size: 1.25rem;
+            }
+
+            .blog-card-body {
+                padding: 40px 20px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loaded via main.js -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="py-5 text-center bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h1 class="hero-title">
+                            Insight That Drives <span class="text-primary-teal">Impact<span class="dot-pink">.</span></span>
+                        </h1>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <p class="lead mb-0">
+                                    Most consultants talk about tools, trends, or experiments.
+                                    We showcase real business problems, the solutions that handle them, and the
+                                    outcomes that followed.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% for post in paginator.posts %}
+                    <div class="col">
+                        <a href="{{ post.url | relative_url }}" class="blog-card h-100" style="text-decoration: none;">
+                            <div class="blog-card-image">
+                                <div class="blog-card-image-inner">
+                                    {% if post.featured_image %}
+                                    <img src="{{ post.featured_image }}" alt="{{ post.title }}">
+                                    {% else %}
+                                    <img src="/images/default-post.jpg" alt="{{ post.title }}">
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Date Badge -->
+                                <div class="blog-card-date-badge">
+                                    {{ post.date | date: "%B %d, %Y" }}
+                                </div>
+                                
+                                <!-- Category Badge -->
+                                {% if post.categories and post.categories.size > 0 %}
+                                <div class="blog-card-category-badge">
+                                    {{ post.categories | first | upcase }}
+                                </div>
+                                {% endif %}
+                                
+                                <!-- Author Avatar -->
+                                <div class="blog-card-author">
+                                    <img src="/images/author-avatar-jh.png" alt="{{ post.author }}">
+                                </div>
+                            </div>
+                            
+                            <div class="blog-card-body">
+                                <h3 class="blog-card-title">{{ post.title }}</h3>
+                                {% if post.excerpt %}
+                                <p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                                {% endif %}
+                                <span class="blog-card-read-more">READ MORE »</span>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if paginator.posts.size == 0 %}
+                <div class="text-center py-5">
+                    <p class="text-muted">No posts yet. Check back soon!</p>
+                </div>
+                {% endif %}
+
+                <!-- Pagination -->
+                {% if paginator.total_pages > 1 %}
+                <div class="pagination-wrapper">
+                    <ul class="pagination">
+                        <!-- Jump back 5 pages -->
+                        {% assign five_back = paginator.page | minus: 5 %}
+                        {% if five_back > 0 %}
+                        <li>
+                            <a href="{% if five_back == 1 %}{{ '/blog/' | relative_url }}{% else %}{{ site.paginate_path | relative_url | replace: ':num', five_back }}{% endif %}" aria-label="Jump back 5">
+                                «
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="disabled">
+                            <span aria-label="Jump back 5">«</span>
+                        </li>
+                        {% endif %}
+
+                        <!-- Previous page -->
+                        {% if paginator.previous_page %}
+                        <li>
+                            <a href="{{ paginator.previous_page_path | relative_url }}" aria-label="Previous">
+                                ‹
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="disabled">
+                            <span aria-label="Previous">‹</span>
+                        </li>
+                        {% endif %}
+
+                        <!-- Calculate page window (5 pages max) -->
+                        {% assign window_size = 5 %}
+                        {% assign half_window = 2 %}
+                        {% assign start_page = paginator.page | minus: half_window %}
+                        {% if start_page < 1 %}
+                            {% assign start_page = 1 %}
+                        {% endif %}
+                        {% assign end_page = start_page | plus: window_size | minus: 1 %}
+                        {% if end_page > paginator.total_pages %}
+                            {% assign end_page = paginator.total_pages %}
+                            {% assign start_page = end_page | minus: window_size | plus: 1 %}
+                            {% if start_page < 1 %}
+                                {% assign start_page = 1 %}
+                            {% endif %}
+                        {% endif %}
+
+                        <!-- Page numbers -->
+                        {% for page in (start_page..end_page) %}
+                            {% if page == paginator.page %}
+                            <li class="active">
+                                <span>{{ page }}</span>
+                            </li>
+                            {% elsif page == 1 %}
+                            <li>
+                                <a href="{{ '/blog/' | relative_url }}">{{ page }}</a>
+                            </li>
+                            {% else %}
+                            <li>
+                                <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!-- Next page -->
+                        {% if paginator.next_page %}
+                        <li>
+                            <a href="{{ paginator.next_page_path | relative_url }}" aria-label="Next">
+                                ›
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="disabled">
+                            <span aria-label="Next">›</span>
+                        </li>
+                        {% endif %}
+
+                        <!-- Jump forward 5 pages -->
+                        {% assign five_forward = paginator.page | plus: 5 %}
+                        {% if five_forward <= paginator.total_pages %}
+                        <li>
+                            <a href="{{ site.paginate_path | relative_url | replace: ':num', five_forward }}" aria-label="Jump forward 5">
+                                »
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="disabled">
+                            <span aria-label="Jump forward 5">»</span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <!-- Loaded via main.js -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>
