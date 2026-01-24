@@ -165,10 +165,11 @@
                         <form id="contactFormSubmit">
                             <div class="row g-2 mb-4">
                                 <div class="col-12">
-                                    <input type="text" name="name" class="form-control" placeholder="Your Name*" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name*"
+                                        required>
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" name="phone" class="form-control" placeholder="Contact Number*">
+                                    <input type="text" name="phone" class="form-control" placeholder="Contact Number">
                                 </div>
                                 <div class="col-12">
                                     <input type="email" name="email" class="form-control" placeholder="Email*" required>
@@ -217,7 +218,7 @@
         const successAlert = document.getElementById('formSuccess');
         const errorAlert = document.getElementById('formError');
 
-        form.addEventListener('submit', async function(e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const formData = new FormData(form);
