@@ -165,33 +165,41 @@
                         <form id="contactFormSubmit">
                             <div class="row g-2 mb-4">
                                 <div class="col-12">
-                                    <input type="text" class="form-control" placeholder="Your Name*" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name*" required>
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control" placeholder="Contact Number*">
+                                    <input type="text" name="phone" class="form-control" placeholder="Contact Number*">
                                 </div>
                                 <div class="col-12">
-                                    <input type="email" class="form-control" placeholder="Email*" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Email*" required>
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control" placeholder="Company">
+                                    <input type="text" name="company" class="form-control" placeholder="Company">
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" rows="4"
+                                    <textarea name="message" class="form-control" rows="4"
                                         placeholder="What's on your mind?"></textarea>
                                 </div>
                             </div>
 
                             <div class="text-center">
-                            <a href="/contact.html" class="btn btn-cta-primary px-5 py-3 fw-bold me-3">
-                                Submit
-                            </a>
-                        </div>
+                                <input type="hidden" name="access_key" value="4a736b35-9b14-4e7d-8c60-c0fada6cdefb">
+                                <input type="hidden" name="subject" value="New Contact Form Submission from Get Latest">
+                                <input type="hidden" name="from_name" value="Get Latest Contact Form">
+                                <button type="submit" class="btn btn-cta-primary px-5 py-3 fw-bold me-3">
+                                    Submit
+                                </button>
+                            </div>
                         </form>
 
-                        <!-- Hidden Success Alert -->
+                        <!-- Success Alert -->
                         <div id="formSuccess" class="alert alert-success mt-4 d-none">
                             Thank you. We have received your inquiry and will reach out shortly.
+                        </div>
+
+                        <!-- Error Alert -->
+                        <div id="formError" class="alert alert-danger mt-4 d-none">
+                            Something went wrong. Please try again or email us directly at justin@getlatest.ai
                         </div>
                     </div>
                 </div>
@@ -204,6 +212,45 @@
 
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const form = document.getElementById('contactFormSubmit');
+        const successAlert = document.getElementById('formSuccess');
+        const errorAlert = document.getElementById('formError');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            successAlert.classList.add('d-none');
+            errorAlert.classList.add('d-none');
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    successAlert.classList.remove('d-none');
+                    form.reset();
+                } else {
+                    errorAlert.classList.remove('d-none');
+                }
+            } catch (error) {
+                errorAlert.classList.remove('d-none');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
+    </script>
 </body>
 
 </html>
