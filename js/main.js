@@ -23,7 +23,15 @@ async function loadComponent(elementId, filePath) {
         const response = await fetch(fullPath);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-        const html = await response.text();
+        let html = await response.text();
+
+        // Replace all internal paths with the correct base path
+        if (basePath) {
+            // Replace href and src attributes that start with /
+            html = html.replace(/href="\/(?!\/)/g, `href="${basePath}/`);
+            html = html.replace(/src="\/(?!\/)/g, `src="${basePath}/`);
+        }
+
         const container = document.getElementById(elementId);
 
         if (container) {
