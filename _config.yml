@@ -24,8 +24,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Get Latest partners with leadership teams to identify ROI-backed AI opportunities 
   and execute initiatives with enterprise-level accountability. We deliver 
   AI solutions that drive measurable business outcomes in revenue, margin, and productivity.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://getlatest.ai" # the base hostname & protocol for your site
+baseurl: "/get-latest-ai" # the subpath of your site, e.g. /blog
+url: "https://get-latest.github.io" # the base hostname & protocol for your site
 twitter_username: ""
 github_username: ""
 

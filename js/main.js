@@ -1,10 +1,26 @@
 /**
+ * Get the base path for the site
+ * Returns the baseurl for GitHub Pages or empty string for root
+ */
+function getBasePath() {
+    // For GitHub Pages, extract the repo name from the path
+    const path = window.location.pathname;
+    const match = path.match(/^\/([^\/]+)\//);
+    if (match && match[1] !== 'index.html') {
+        return '/' + match[1];
+    }
+    return '';
+}
+
+/**
  * Component Loader
  * Fetches HTML snippets and injects them into placeholders
  */
 async function loadComponent(elementId, filePath) {
     try {
-        const response = await fetch(filePath);
+        const basePath = getBasePath();
+        const fullPath = basePath + filePath;
+        const response = await fetch(fullPath);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const html = await response.text();
@@ -19,7 +35,7 @@ async function loadComponent(elementId, filePath) {
             }
         }
     } catch (error) {
-        console.error(`Error loading ${filePath}:`, error);
+        console.error(`Error loading ${fullPath}:`, error);
     }
 }
 
@@ -29,12 +45,18 @@ async function loadComponent(elementId, filePath) {
 function setActiveNavLink() {
     // Get current page path
     let currentPath = window.location.pathname;
-    
+    const basePath = getBasePath();
+
+    // Remove basePath from currentPath if present
+    if (basePath && currentPath.startsWith(basePath)) {
+        currentPath = currentPath.substring(basePath.length);
+    }
+
     // Normalize trailing slashes and empty paths
     if (currentPath === "" || currentPath === "/") {
         currentPath = "/index.html";
     }
-    
+
     // Normalize /blog/ to /blog/index.html for matching
     if (currentPath === "/blog/" || currentPath === "/blog") {
         currentPath = "/blog/index.html";
@@ -50,12 +72,17 @@ function setActiveNavLink() {
 
         // Get the href and normalize it
         let href = link.getAttribute('href');
-        
+
+        // Remove basePath from href if present
+        if (basePath && href.startsWith(basePath)) {
+            href = href.substring(basePath.length);
+        }
+
         // Normalize href for blog links
         if (href === "/blog/" || href === "/blog") {
             href = "/blog/index.html";
         }
-        
+
         // Check for exact match first
         if (href === currentPath) {
             link.classList.add('active');
